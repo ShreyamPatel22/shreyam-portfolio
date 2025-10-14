@@ -1,16 +1,19 @@
+import { Code2, Globe } from "lucide-react";
+
 export type Project = {
     title: string;
-    blurb: string;
+    description: string;
     tags: string[];
     repo?: string;
     demo?: string;
+    highlights?: string[];
+    featured?: boolean;
 };
-
-export function ProjectCard({ title, blurb, tags, repo, demo }: Project) {
+export function ProjectCard({ title, description, tags, repo, demo, highlights }: Project) {
     return (
       <article className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:shadow-md">
         <h3 className="text-lg font-semibold">{title}</h3>
-        <p className="mt-2 text-sm text-gray-600">{blurb}</p>
+        <p className="mt-2 text-sm text-gray-600">{description}</p>
         <div className="mt-3 flex flex-wrap gap-2">
           {tags.map((t) => (
             <span key={t} className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-gray-700">
@@ -18,6 +21,14 @@ export function ProjectCard({ title, blurb, tags, repo, demo }: Project) {
             </span>
           ))}
         </div>
+
+        {highlights && highlights.length > 0 && (
+          <ul className = "mt-3 text-sn text-gray-700 space-y-1">
+            {highlights.map((h) => (
+              <li key={h}> * {h}</li>
+            ))}
+          </ul>
+        )}
         <div className="mt-4 flex gap-3">
           {repo && (
             <a className="text-sm underline" href={repo} target="_blank">
