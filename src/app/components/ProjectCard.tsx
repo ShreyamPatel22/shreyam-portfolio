@@ -29,15 +29,27 @@ export function ProjectCard({ title, description, tags, repo, demo, highlights }
             ))}
           </ul>
         )}
-        <div className="mt-4 flex gap-3">
+        <div className="mt-4 flex gap-4">
           {repo && (
-            <a className="text-sm underline" href={repo} target="_blank">
-              Code
+            <a 
+              className="inline-flex items-center gap-1 text-sm underline underline-offset-4 hover:no-underline" 
+              href={repo} 
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View code for ${title}`}
+              >
+            <Code2 size={14} /> Code
             </a>
           )}
           {demo && (
-            <a className="text-sm underline" href={demo} target="_blank">
-              Live
+            <a 
+              className="inline-flex items-center gap-1 text-sm underline underline-offset-4 hover:no-underline" 
+              href={demo} 
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open live demo for ${title}`}
+              >
+              <Globe size={14} /> Live
             </a>
           )}
         </div>
